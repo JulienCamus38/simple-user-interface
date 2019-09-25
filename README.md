@@ -5,8 +5,9 @@
 To accomplish this, let's first run the Spring Boot application, so the REST service is alive and listening for requests (at http://localhost:8080). Type the following commands:
 
 ```bash
-$ ./application/mvnw clean install
-$ java -jar ./application/backend/target/backend-0.0.1-SNAPSHOT.jar
+$ cd ./application/
+$ ./mvnw clean install
+$ java -jar ./backend/target/backend-0.0.1-SNAPSHOT.jar
 ```
 
 Once the Spring Boot application has been started, let's open a command console and type the following command:
