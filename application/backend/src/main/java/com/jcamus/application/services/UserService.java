@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.jcamus.application.entities.User;
 import com.jcamus.application.repositories.IUserRepository;
@@ -73,5 +74,15 @@ public class UserService implements IUserService<User, Long> {
 			map.computeIfAbsent(user.getGroupId(), k -> new ArrayList<User>()).add(user);
 		});
 		return map;
+	}
+
+	@GetMapping("/users/groupedbyid")
+	public List<User> listAllGroupByGroupId() {
+		Map<String, List<User>> map = findAllGroupByGroupId();
+		List<User> users = new ArrayList<>();
+		for (String k : map.keySet()) {
+			users.addAll(map.get(k));
+		}
+		return users;
 	}
 }

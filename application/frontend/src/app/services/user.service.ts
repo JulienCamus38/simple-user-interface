@@ -39,4 +39,8 @@ export class UserService {
       .pipe(catchError(this.handleError));
   }
 
+  public findAllGroupByGroupId(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.usersUrl + '/groupedbyid');
+  }
+
 }

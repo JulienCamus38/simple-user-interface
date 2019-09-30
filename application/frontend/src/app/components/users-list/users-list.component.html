@@ -16,12 +16,12 @@
 
 <div class="card my-5">
     <div class="card-body">
-        <table class="table table-bordered table-striped">
+        <table mdbTable class="z-depth-1">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Group ID</th>
+                    <th [mdbTableSort]="users" sortBy="id">ID</th>
+                    <th [mdbTableSort]="users" sortBy="name">Name</th>
+                    <th [mdbTableSort]="users" sortBy="groupId" (click)="updateUsersListGroupByGroupId()">Group ID</th>
                     <th scope="col">x</th>
                 </tr>
             </thead>

@@ -12,12 +12,15 @@ export class UsersListComponent implements OnInit {
 
   users: User[];
 
+  reverse: boolean;
+
   userSearch;
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) { }
 
   ngOnInit() {
     this.updateUsersList();
+    this.reverse = false;
   }
 
   updateUsersList() {
@@ -32,6 +35,17 @@ export class UsersListComponent implements OnInit {
     this.userService.remove(id).subscribe(result => {
       this.updateUsersList();
       this.gotoUsersList();
+    });
+  }
+
+  updateUsersListGroupByGroupId() {
+    this.userService.findAllGroupByGroupId().subscribe(data => {
+      if (this.reverse) {
+        this.users = data.reverse();
+      } else {
+        this.users = data;
+      }
+      this.reverse = !this.reverse;
     });
   }
 
